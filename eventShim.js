@@ -136,7 +136,12 @@
                 fn = handler[customELKey];
             }
 
-            this.attachEvent("on" + type, fn.bind(this));
+            try{
+                this.attachEvent("on" + type, fn.bind(this));
+            }
+            catch(err){
+                // for some reason this fails on ie 8 windows xp
+            }
         };
 
         /**
